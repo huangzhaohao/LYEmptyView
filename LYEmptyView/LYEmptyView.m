@@ -175,11 +175,17 @@
     }
     
     if (self.contentViewOffset) { //有无设置偏移
-        self.ly_centerY += self.contentViewOffset;
-        
+        if (self.emptyViewIsCompleteCoverSuperView) {
+            self.contentView.ly_centerY += self.contentViewOffset;
+        }else{
+            self.ly_centerY += self.contentViewOffset;
+        }
     } else if (self.contentViewY < 1000) { //有无设置Y坐标值
-        self.ly_y = self.contentViewY;
-        
+        if (self.emptyViewIsCompleteCoverSuperView) {
+            self.contentView.ly_y = self.contentViewY;
+        }else{
+            self.ly_y = self.contentViewY;
+        }
     }
     
     //是否忽略scrollView的contentInset
